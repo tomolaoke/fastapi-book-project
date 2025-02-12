@@ -1,8 +1,10 @@
 from typing import OrderedDict
 
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 
+router = APIRouter(prefix="/api/v1/books", tags=["books"])
 
 from api.db.schemas import Book, Genre, InMemoryDB
 

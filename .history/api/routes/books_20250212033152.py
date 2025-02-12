@@ -44,10 +44,10 @@ async def create_book(book: Book):
 
 @router.get("/{book_id}", response_model=Book)
 async def get_book(book_id: int):
-    book = db.get_book(book_id)
-    if not book:
-        raise HTTPException(status_code=404, detail="Book Not Found")
-    return book
+    for book in books:
+        if book.id == book_id:
+            return book
+    raise HTTPException(status_code=404, detail="Book not found")
 
 
 @router.put("/{book_id}", response_model=Book, status_code=status.HTTP_200_OK)

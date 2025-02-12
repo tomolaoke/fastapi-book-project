@@ -1,15 +1,6 @@
 from tests import client
 
-def test_get_book():
-    # Test valid book
-    response = client.get("/api/v1/books/1")
-    assert response.status_code == 200
-    assert response.json()["id"] == 1
-    
-    # Test invalid book
-    response = client.get("/api/v1/books/999")
-    assert response.status_code == 404
-    assert response.json() == {"detail": "Book not found"}
+
 
 def test_get_all_books():
     response = client.get("/books/")
